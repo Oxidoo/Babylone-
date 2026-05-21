@@ -173,6 +173,7 @@
     box-shadow: 0 4px 14px rgba(245,166,35,.35);
   }
   .btn-cta:hover { background: var(--orange-deep); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(245,166,35,.45); }
+  .btn-cta--mobile { display: none; }
 
   .nav-burger {
     display: none;
@@ -832,7 +833,8 @@
     }
     .logo { height: 36px; }
     .nav-status { display: none; }
-    .btn-cta { padding: 9px 14px; font-size: 13px; }
+    .btn-cta--desktop { display: none; }
+    .btn-cta--mobile { display: inline-flex; padding: 9px 14px; font-size: 13px; }
     .nav-right { gap: 6px; }
     body { overscroll-behavior-y: none; }
 
@@ -853,18 +855,23 @@
 
     .menu-head { grid-template-columns: 1fr; gap: 12px; }
     .menu-layout { grid-template-columns: 1fr; gap: 24px; }
+
+    /* sticky nav catégories + filtres sur mobile */
     aside.menu-side {
       position: sticky; top: 64px;
       background: var(--cream);
       margin: 0 -20px;
-      padding: 14px 20px;
+      padding: 12px 20px;
       z-index: 5;
       border-bottom: 1px solid var(--line);
     }
-    .side-group + .side-group { margin-top: 14px; padding-top: 14px; }
+    .side-group + .side-group { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
     .side-group.cats { margin: 0; padding: 0; border: none; }
-    .side-group.filters, .side-group.search { display: none; }
+    .side-group.search { display: none; }
+    .side-group.filters { display: block; }
     .side-title { display: none; }
+
+    /* chips catégories horizontales */
     .cat-list {
       display: flex; gap: 6px;
       overflow-x: auto;
@@ -882,13 +889,27 @@
       font-size: 14px;
       background: var(--paper);
       white-space: nowrap;
+      border: 1px solid var(--line);
     }
     .cat-link .count { display: none; }
-    .cat-link.active { background: var(--ink); color: #fff; }
+    .cat-link.active { background: var(--ink); color: #fff; border-color: var(--ink); }
 
-    .cat-header h3 { font-size: 28px; }
-    .card { grid-template-columns: 100px 1fr; }
+    /* chips filtres compactes */
+    .filter-row { gap: 6px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -20px; padding: 0 20px; }
+    .filter-row::-webkit-scrollbar { display: none; }
+    .chip { flex: none; white-space: nowrap; padding: 6px 12px; font-size: 12px; }
+
+    /* cartes verticales plein-largeur */
+    .cat-header h3 { font-size: 26px; }
+    .cards { grid-template-columns: 1fr; gap: 14px; }
+    .card {
+      grid-template-columns: 1fr;
+      grid-template-rows: 160px auto;
+    }
+    .card-img { height: 160px; }
+    .card-body { padding: 14px 16px; gap: 8px; }
     .card h4 { font-size: 18px; }
+    .card .price { font-size: 17px; }
 
     .contact-info { grid-template-columns: 1fr; gap: 22px; }
   }
@@ -917,7 +938,8 @@
       <span class="dot"></span>
       <span id="navStatusText">Ouvert</span>
     </div>
-    <a href="#contact" class="btn-cta">Réserver</a>
+    <a href="#contact" class="btn-cta btn-cta--desktop">Réserver</a>
+    <a href="#menu" class="btn-cta btn-cta--mobile">Voir la carte</a>
     <button class="nav-burger" aria-label="Menu">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
