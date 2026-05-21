@@ -854,7 +854,8 @@
     .hist-figure { max-width: 420px; }
 
     .menu-head { grid-template-columns: 1fr; gap: 12px; }
-    .menu-layout { grid-template-columns: 1fr; gap: 24px; }
+    .menu-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .menu-layout > * { min-width: 0; }
 
     /* sticky nav catégories + filtres sur mobile */
     aside.menu-side {
