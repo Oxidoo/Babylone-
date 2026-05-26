@@ -193,7 +193,7 @@
     min-height: 100vh;
     padding: 0;
     display: flex;
-    align-items: flex-end;
+    align-items: stretch;
     overflow: hidden;
     color: #fff;
   }
@@ -219,7 +219,7 @@
   .hero-inner {
     position: relative;
     z-index: 2;
-    padding: 0 32px 88px;
+    padding: 90px 32px 88px;
     max-width: 1280px;
     margin: 0 auto;
     width: 100%;
@@ -323,7 +323,7 @@
   .stat-card.full .stars { color: var(--yellow); letter-spacing: 2px; font-size: 16px; line-height: 1; }
   .stat-card.full .stat-val { font-size: 24px; }
 
-  /* hero status pill — floating top-right, separate from nav-status */
+  /* hero status pill — visible on mobile only (nav-status covers desktop/tablet) */
   .hero-status-pill {
     position: absolute;
     z-index: 3;
@@ -346,6 +346,7 @@
   }
   .hero-status-pill .sep { color: var(--ink-mute); }
   .hero-status-pill small { color: var(--ink-soft); font-weight: 500; }
+  @media (min-width: 721px) { .hero-status-pill { display: none !important; } }
 
   .scroll-hint {
     position: absolute;
@@ -809,12 +810,6 @@
   footer .logo { color: var(--cream); justify-content: center; margin-bottom: 14px; }
   footer a { color: var(--yellow); }
 
-  /* ============ Tablette (721–1024px) ============ */
-  @media (min-width: 721px) and (max-width: 1024px) {
-    .hero { align-items: flex-start; }
-    .hero-inner { padding-top: 110px; }
-  }
-
   /* ============ Mobile ============ */
   @media (max-width: 1024px) {
     .hero-inner { grid-template-columns: 1fr; gap: 32px; padding-bottom: 64px; }
@@ -846,7 +841,7 @@
     body { overscroll-behavior-y: none; }
 
     .section-pad, .menu, .contact { padding-left: 20px; padding-right: 20px; }
-    .hero-inner { padding: 0 20px 64px; }
+    .hero-inner { padding: 90px 20px 64px; }
     .hero h1 { font-size: clamp(44px, 12vw, 72px); }
     .hero-status-pill { top: 92px; right: 20px; padding: 8px 12px 8px 10px; font-size: 12px; }
     .hero-status-pill .sep, .hero-status-pill small { display: none; }
